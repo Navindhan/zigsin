@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index Page</title>
+	<link rel="stylesheet" type="text/css" href="C:\new\fontawesome-free-5.12.0-web\css\all.css">	
+	<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+	<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+	<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			font-family: sans-serif;
+			box-sizing: border-box;
+		}
+		body{
+			width: 100%;
+			height: 1400px;			
+			background: linear-gradient(to right,#ff6666,#ff7622);
+			display: flex;
+			justify-content: center;		
+		}		
+		#mydiv #main{
+			position: relative;
+			width: calc(100% - 100px);
+			background: #eee;
+			height: 1200px;			
+			margin: 100px 0;	
+		}
+		#mydiv #main #header{
+			position: relative;	
+			height: 100px;
+			display: flex;
+		}
+		#mydiv #main #header ul{
+			display: flex;
+			margin: 0 15px;
+		}
+		#mydiv #main #header #bar{
+			position: absolute;
+			margin: 30px;
+			padding: 10px;
+			visibility: hidden;
+			cursor: pointer;
+		}
+		#mydiv #main #header #bar:hover{
+			background: rgba(150,150,150,0.5);
+		}
+		#mydiv #main #header li{
+			position: relative;
+			list-style: none;
+			margin: 40px 30px;
+			font-size: 14px;
+			font-weight: bold;
+			color: #007;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+		#mydiv #main #header .inner1{
+			background: #eee;
+			display: flex;
+			z-index: 1;
+		}
+		#mydiv #main #header .inner1 li i{
+			font-size: 18px;
+			margin: 0 10px;
+		}
+		#mydiv #main #header li:first-child{
+			color: #000;
+		}
+		#mydiv #main #header .inner2{
+			position: absolute;
+			right: 0;
+			background: #eee;			
+			height: 100px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 2;
+		}
+		#mydiv #main #header .inner2 i{
+			font-size: 20px;
+			color: rgba(150,150,150,0.8);
+		}
+		#mydiv #main #header .inner2 ul li:nth-child(2){
+			font-size: 12px;
+			color: #000;
+			font-weight: bold;
+		}
+		#mydiv #main #header .inner2 ul li button{
+			border: none;
+			outline: none;
+			padding: 10px 30px;
+			font-weight: bold;
+			font-size: 15px;
+			text-transform: uppercase;
+			border-radius: 2rem;
+			background: linear-gradient(to right,#ff6666,#ff7622);
+			color: #fff;	
+		}
+		#mydiv #main #back{
+			position: relative;
+			width: 100%;
+			height: 400px;
+			display: flex;
+			justify-content: center;
+			align-items: center;			
+			background-image: url('image 32image.png');
+			background-size: cover;
+			background-position: fixed;			
+		}
+		#mydiv #main #back .box{
+			width: 560px;
+			height: 300px;
+			background: rgba(0,0,50,0.5);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			border-radius: 5px;			
+			padding: 40px;
+			color: #fff;
+		}
+		#mydiv #main #back .box h1{
+			margin: 20px;
+		}
+		#mydiv #main #back .box p{
+			margin: 20px;
+		}
+		#mydiv #main #back .box button{
+			margin: 20px;
+			border: none;
+			outline: none;
+			padding: 10px 20px;
+			border-radius: 2rem;
+			color: #fff;
+			text-transform: uppercase;
+			font-weight: bold;
+			background: linear-gradient(to right,#ff6666,#ff7622);
+		}
+		#mydiv #main #tiles{
+			width: 100%;
+			height: 700px;
+			background: #eee;
+			display: flex;
+			justify-content: center;
+			align-items: center;			
+			flex-wrap: wrap;
+		}
+		#mydiv #main #tiles .tile{
+			width: 400px;
+			height: 600px;
+			border-radius: 3px;
+			background: #fff;
+			margin: 10px 15px;			
+		}
+		#mydiv #main #tiles .tile .content{
+			width: 100%;
+			height: calc(100% - 250px);
+			display: flex;
+			justify-content: center;
+			align-items: center;			
+			flex-direction: column;
+			padding: 20px;
+		}
+		#mydiv #main #tiles .tile .content h2{
+			width: 250px;
+			text-align: center;
+			line-height: 38px;
+			margin: 10px;
+		}
+		#mydiv #main #tiles .tile .content p{
+			width: 350px;
+			text-align: center;
+			line-height: 25px;
+			margin: 10px;
+		}
+		#mydiv #main #tiles .tile .content button{
+			padding: 5px 20px;
+			text-align: center;
+			line-height: 25px;
+			margin: 10px;
+			border-radius: 2rem;
+			border: 1px solid #333;
+			outline: none;
+			transition: 0.5s;
+			cursor: pointer;
+			text-transform: uppercase;
+			font-size: 13px;
+			font-weight: bold;
+			background: #fff;
+		}
+		#mydiv #main #tiles .tile .content button:hover{			
+			background: linear-gradient(to right,#ff6666,#ff7622);
+		}
+		#mydiv #main #tiles .tile .image{
+			width: 100%;
+			height: 250px;
+			background: orange;
+		}
+		#mydiv #main #tiles .tile .image img{
+			width: 100%;
+			height: 100%;
+		}
+		@media(max-width: 1030px){
+			#mydiv #main #header li{			
+				margin: 40px 20px;
+			}
+		}
+		@media(max-width: 970px){
+			body{
+				height: 2000px;
+			}
+			#mydiv #main #tiles{
+				height: 1300px;
+			}
+		}
+		@media(max-width: 890px){
+			#mydiv #main #header li{			
+				margin: 40px 10px;
+			}
+		}
+		@media(max-width: 760px){
+			#mydiv #main #header .inner1 #bar{
+				position: relative;
+				visibility: visible;
+			}
+			#mydiv #main #header .inner1 ul{
+				position: absolute;
+				visibility: hidden;
+			}
+		}
+		@media(max-width: 520px){
+			#mydiv #main #tiles .tile{
+				width: 350px;				
+			}
+		}
+	</style>	
+</head>
+<body>
+	 <!-- <div id="main">
+		<div id="header">
+			<div class="inner1">
+				<i class="fa fa-bars" id='bar'></i>
+				<ul>
+					<li>Products <i class="fa fa-angle-down"></i></li>
+					<li>Collections</li>
+					<li>Gifts</li>
+					<li>Our magazine</li>
+				</ul>
+			</div>
+			<div class="inner2">
+				<ul>
+					<li><i class="fa fa-search"></i></li>
+					<li>Login</li>
+					<li><button>Sign up</button></li>					
+				</ul>
+			</div>
+		</div>
+		<div id="back">
+			<div class="box">
+				<h1>The gift of happiness</h1>
+				<p>Show your gratitude with one of our gift sets, large and small, specifically designed to spread joy to someone you love.</p>
+				<button>Shop Now</button>
+			</div>
+		</div>
+		<div id="tiles">
+			<div class="tile">
+				<div class="content">
+					<h2>Ready for autumn collection</h2>
+					<p>Treat yourself to some of our brand new autumn collection - all with the wonderful colors surrounding you.</p>
+					<button>Purchase Now</button>
+				</div>
+				<div class="image"><img src="Rectangle 19tile1-img-3.png"></div>
+			</div>
+			<div class="tile">
+				<div class="content">
+					<h2>Ready for autumn collection</h2>
+					<p>Treat yourself to some of our brand new autumn collection - all with the wonderful colors surrounding you.</p>
+					<button>Purchase Now</button>
+				</div>
+				<div class="image"><img src="Rectangle 19.png"></div>
+			</div>
+	 	</div>
+	 </div>     -->
+	 <div id="mydiv"></div>
+</body>
+<script type="text/babel">
+	class Header extends React.Component {
+        render() {
+          return <div id="main">
+		<div id="header">
+			<div class="inner1">
+				<i class="fa fa-bars" id='bar'></i>
+				<ul>
+					<li>Products <i class="fa fa-angle-down"></i></li>
+					<li>Collections</li>
+					<li>Gifts</li>
+					<li>Our magazine</li>
+				</ul>
+			</div>
+			<div class="inner2">
+				<ul>
+					<li><i class="fa fa-search"></i></li>
+					<li>Login</li>
+					<li><button>Sign up</button></li>					
+				</ul>
+			</div>
+		</div>
+		<div id="back">
+			<div class="box">
+				<h1>The gift of happiness</h1>
+				<p>Show your gratitude with one of our gift sets, large and small, specifically designed to spread joy to someone you love.</p>
+				<button>Shop Now</button>
+			</div>
+		</div>
+		<div id="tiles">
+			<div class="tile">
+				<div class="content">
+					<h2>Ready for autumn collection</h2>
+					<p>Treat yourself to some of our brand new autumn collection - all with the wonderful colors surrounding you.</p>
+					<button>Purchase Now</button>
+				</div>
+				<div class="image"><img src="Rectangle 19tile1-img-3.png" /></div>
+			</div>
+			<div class="tile">
+				<div class="content">
+					<h2>Ready for autumn collection</h2>
+					<p>Treat yourself to some of our brand new autumn collection - all with the wonderful colors surrounding you.</p>
+					<button>Purchase Now</button>
+				</div>
+				<div class="image"><img src="Rectangle 19.png" /></div>
+			</div>
+	 	</div>
+	 </div>    
+        }
+      }
+
+      ReactDOM.render(<Header />, document.getElementById('mydiv'))
+</script>
+<script type="text/javascript">
+	window.onload=function(){
+		var btn = document.querySelector('#mydiv #main #header .inner1 #bar');
+		var ul = document.querySelector('#mydiv #main #header .inner1 ul');
+		var inner1 = document.querySelector('#mydiv #main #header .inner1');
+		var var1=0;
+		btn.addEventListener('click',function(){
+			if(var1==0){
+				btn.className="fa fa-times";
+				btn.style.color="red";
+				ul.style.visibility="visible";
+				ul.style.position="relative";
+				inner1.style.zIndex=3;
+				var1=1;
+			}
+			else{
+				btn.className="fa fa-bars";
+				btn.style.color="black";
+				ul.style.visibility="hidden";
+				ul.style.position="absolute";
+				inner1.style.zIndex=1;
+				var1=0;
+			}
+		})
+	}
+</script>
+</html>
+	
